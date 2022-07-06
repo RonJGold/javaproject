@@ -1,34 +1,31 @@
 package tests;
 
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.AfterSuite;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 import pages.main_animal;
-
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.DataProvider;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.BeforeTest;
-import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeSuite;
-import org.testng.annotations.AfterSuite;
-
 public class lnk_test extends basetest {
 // Local variables 
 	main_animal lnk ;
 	sdk.logger logger ;
 	
-	
+
 		
 
 	
-@Test(dataProvider = "SIDEBAR_links")
- public void sidebar_link( String animal , String exp_result  ) {
+@Test(dataProvider = "data-provider", dataProviderClass = DP.class)
+ public void sidebar_link( String exp_result  ) {
 		
 		  try {
 			  logger.info("animal_link", "The specific type of link  is : Sidebar " );
-			  String result = lnk.get_sidebar_result(animal) ;
+			  String result = lnk.get_sidebar_result(exp_result) ;
 			 sa.assertEquals(result, exp_result);
 
 			  logger.info("animal_link", "The Actual Animal page we have reached  : " + result + " , " + "The desired Animal Page  is : " + exp_result);
@@ -46,12 +43,12 @@ public class lnk_test extends basetest {
 
   }
 
-@Test(dataProvider = "Quicklinks")
-public void quick_link( String animal , String exp_result  ) {
+@Test(dataProvider = "data-provider", dataProviderClass = DP.class)
+public void quick_link(  String exp_result  ) {
 		
 		  try {
-			  logger.info("animal_link", "The specific type of link  is : Sidebar " );
-			  String result = lnk.get_quicklinks_result(animal) ;
+			  logger.info("animal_link", "The specific type of link  is : Quicklinks " );
+			  String result = lnk.get_quicklinks_result(exp_result) ;
 			 sa.assertEquals(result, exp_result);
 
 			  logger.info("animal_link", "The Actual Animal page we have reached  : " + result + " , " + "The desired Animal Page  is : " + exp_result);
@@ -69,12 +66,12 @@ public void quick_link( String animal , String exp_result  ) {
 
  }
 
-@Test(dataProvider = "Mainlinks")
-public void main_link( String animal , String exp_result  ) {
+@Test (dataProvider = "data-provider", dataProviderClass = DP.class)
+public void main_link(String exp_result  ) {
 		
 		  try {
-			  logger.info("animal_link", "The specific type of link  is : Sidebar " );
-			  String result = lnk.get_mainlinks_result(animal) ;
+			  logger.info("animal_link", "The specific type of link  is : Mainlinks " );
+			  String result = lnk.get_mainlinks_result(exp_result) ;
 			 sa.assertEquals(result, exp_result);
 
 			  logger.info("animal_link", "The Actual Animal page we have reached  : " + result + " , " + "The desired Animal Page  is : " + exp_result);
@@ -103,43 +100,7 @@ public void main_link( String animal , String exp_result  ) {
 
   
   
-	  @DataProvider(name = "SIDEBAR_links") 
-	  public Object[][] s_links() {
-		  Object[][] data = new Object[][] {
-			  {"Fish" ,"Fish"} ,
-			  {"Dogs" ,"Dogs"} ,
-			  {"Cats","Cats"} ,
-			  {"Reptiles" ,"Reptiles"} ,
-			  {"Birds" ,"Birds"},
-			  {"Horses" , "Horses" }
-
-		  };
-		  return data;}
-		  
-		  @DataProvider(name = "Quicklinks") 
-		  public Object[][] q_links() {
-			  Object[][] data = new Object[][] {
-				  {"Fish" ,"Fish"} ,
-				  {"Dogs" ,"Dogs"} ,
-				  {"Cats","Cats"} ,
-				  {"Reptiles" ,"Reptiles"} ,
-				  {"Birds" ,"Birds"},
-				  {"Horses" , "Horses" }
-
-			  };
-			  return data;}
-		  @DataProvider(name = "Mainlinks") 
-		  public Object[][] m_links() {
-			  Object[][] data = new Object[][] {
-				  {"Fish" ,"Fish"} ,
-				  {"Dogs" ,"Dogs"} ,
-				  {"Cats","Cats"} ,
-				  {"Reptiles" ,"Reptiles"} ,
-				  {"Birds" ,"Birds"},
-				  {"Horses" , "Horses" }
-
-			  };
-			  return data;}
+	  
   @BeforeClass
   public void beforeClass() {
 	  lnk = new main_animal(driver);
@@ -158,7 +119,7 @@ public void main_link( String animal , String exp_result  ) {
   }
 
   @BeforeTest
-  public void beforeTest() {
+  public void beforeTest() { 
   }
 
   @AfterTest

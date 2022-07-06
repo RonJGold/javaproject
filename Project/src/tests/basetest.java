@@ -9,7 +9,7 @@ public class basetest  {
 	SoftAssert sa ;
 	
 	public basetest() {
-		System.setProperty("webdriver.chrome.driver", "D:\\ronjg\\Desktop\\DEV - LANG\\Projects\\Python\\100daysofcode-Part2\\DAY48\\chromedriver.exe");
+		System.setProperty("webdriver.chrome.driver", "D:\\ronjg\\Desktop\\DEV - LANG\\chromewebdriver\\chromedriver.exe");
 		driver = new ChromeDriver();
 		 sa = new SoftAssert();
 	}

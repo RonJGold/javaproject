@@ -6,14 +6,16 @@
       <class name="tests.lnk_test">
         <methods>
           <include name="afterSuite"/>
-          <include name="afterTest"/>
-          <include name="beforeTest"/>
-          <include name="afterMethod"/>
           <include name="beforeSuite"/>
           <include name="afterClass"/>
-          <include name="animal_link"/>
-          <include name="beforeMethod"/>
+          <include name="afterTest"/>
+          <include name="beforeTest"/>
           <include name="beforeClass"/>
+          <include name="beforeMethod"/>
+          <include name="sidebar_link"/>
+          <include name="quick_link"/>
+          <include name="main_link"/>
+          <include name="afterMethod"/>
         </methods>
       </class> <!-- tests.lnk_test -->
     </classes>
